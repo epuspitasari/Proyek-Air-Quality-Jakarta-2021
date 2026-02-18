@@ -1,0 +1,49 @@
+# config/config.yaml
+
+# 1. Project Info
+project_name: Air Quality Jakarta
+seed: 42
+
+# 2. Path Configuration (Alamat Folder & File)
+paths:
+  raw_data: "data/raw/data_udara.csv"
+  raw_dataset_dir: "data/raw/"
+  interim_dataset_dir: "data/interim/"
+  interim_filename: "data_gabungan.pkl"
+  processed_dataset_dir: "data/processed/"
+  model_path: "models/best_model.pkl"
+  scaler_path: "models/scaler.pkl"
+  encoder_path: "models/label_encoder.pkl"
+
+# 3. Data Definition
+int_columns: [pm10, pm25, so2, co, o3, no2]
+str_columns: [stasiun, critical, category, tanggal]
+label: category
+features: [pm10, pm25, so2, co, o3, no2]
+
+# 4. Data Splitting & Parameters
+params:
+  train_size: 0.8
+  valid_size: 0.1
+  test_size: 0.1
+  n_estimators: 100
+  random_state: 42
+
+# 5. Nilai Imputasi (Hasil EDA Ety)
+imputation:
+  impute_mean: [pm10, pm25, so2, co, o3, no2]
+  impute_values:
+    pm10: 28.0
+    pm25: 39.0
+    so2: 35.0
+    co: 11.0
+    o3: 29.0
+    no2: 18.0
+
+# 6. Kategori Output (Interpretasi ISPU)
+categories:
+  - BAIK
+  - SEDANG
+  - TIDAK SEHAT
+  - SANGAT TIDAK SEHAT
+  - BERBAHAYA
